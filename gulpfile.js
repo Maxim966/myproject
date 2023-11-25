@@ -5,7 +5,6 @@ const {
   watch
 } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
-const ghPages = require('gulp-gh-pages');
 const cleanCSS = require('gulp-clean-css');
 const del = require('del');
 const browserSync = require('browser-sync').create();
@@ -320,10 +319,6 @@ const toProd = (done) => {
   done();
 };
 
-dest.task('deploy', function() {
-  return dest.src('./app/**/*')
-    .pipe(ghPages());
-});
 
 exports.default = series(clean, htmlInclude, scripts, styles, resources, images, webpImages, svgSprites, watchFiles);
 
