@@ -2,10 +2,13 @@ const {
   src,
   dest,
   series,
-  watch
+  watch,
+  task
 } = require('gulp');
+
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
+const ghPages = require('gulp-gh-pages');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const sass = require('sass');
@@ -330,3 +333,4 @@ exports.cache = series(cache, rewrite);
 
 exports.zip = zipFiles;
 
+task('deploy', () => src('./app/**/*').pipe(ghPages()));
